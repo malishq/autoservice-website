@@ -81,7 +81,7 @@ export function Hero() {
               {SITE.phone}
             </a>
             <br />
-            {SITE.hours}, {SITE.district.toLowerCase()}
+            {SITE.hours}, {SITE.district}
           </p>
         </div>
         <div className="relative h-[92vw] sm:h-[70vw] lg:h-auto">
