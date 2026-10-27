@@ -2,27 +2,52 @@ import Link from "next/link";
 import { CREDITS } from "@/lib/photos";
 import { SITE } from "@/lib/site";
 
-const letters = [
-  { char: "О", tone: "bg-accent", height: "100%" },
-  { char: "с", tone: "bg-surface-3", height: "80%" },
-  { char: "ь", tone: "bg-surface-2", height: "64%" },
+type Block = { char: string; fill: string; top: number; size: number };
+
+function Mark({ width, height, baseline, blocks, className }: { width: number; height: number; baseline: number; blocks: Block[]; className: string }) {
+  const gap = 6;
+  const bw = (width - gap * (blocks.length - 1)) / blocks.length;
+  return (
+    <svg viewBox={`0 0 ${width} ${height}`} className={className} aria-hidden>
+      {blocks.map((b, i) => (
+        <g key={b.char}>
+          <rect x={i * (bw + gap)} y={b.top} width={bw} height={height - b.top} fill={b.fill} />
+          <text
+            x={i * (bw + gap) + bw / 2}
+            y={baseline}
+            textAnchor="middle"
+            className="font-display"
+            fontSize={b.size}
+            fontWeight={500}
+            fill="var(--ground)"
+          >
+            {b.char}
+          </text>
+        </g>
+      ))}
+    </svg>
+  );
+}
+
+const wide: Block[] = [
+  { char: "О", fill: "var(--accent)", top: 0, size: 380 },
+  { char: "с", fill: "var(--surface-3)", top: 80, size: 420 },
+  { char: "ь", fill: "var(--surface-2)", top: 96, size: 420 },
+];
+
+const tall: Block[] = [
+  { char: "О", fill: "var(--accent)", top: 0, size: 512 },
+  { char: "с", fill: "var(--surface-3)", top: 108, size: 560 },
+  { char: "ь", fill: "var(--surface-2)", top: 130, size: 560 },
 ];
 
 export function Footer() {
   return (
     <footer className="bg-ground">
       <div className="mx-auto w-full max-w-[1800px] px-5 pt-16 pb-10 sm:px-8 sm:pt-24">
-        <div className="flex h-[22svh] min-h-[160px] items-end gap-1 lg:h-[34svh] lg:min-h-[240px]" role="img" aria-label="Ось">
-          {letters.map((l) => (
-            <span
-              key={l.char}
-              aria-hidden
-              className={`${l.tone} grid flex-1 place-items-center overflow-hidden font-display text-[min(26vw,20svh)] leading-none font-medium text-ground lg:text-[min(18vw,30svh)]`}
-              style={{ height: l.height }}
-            >
-              {l.char}
-            </span>
-          ))}
+        <div role="img" aria-label="Ось">
+          <Mark width={1200} height={540} baseline={480} blocks={tall} className="block w-full sm:hidden" />
+          <Mark width={1800} height={400} baseline={356} blocks={wide} className="hidden w-full sm:block" />
         </div>
 
         <div className="mt-14 grid gap-10 lg:grid-cols-12 lg:gap-8">

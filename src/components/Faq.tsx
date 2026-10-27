@@ -24,7 +24,7 @@ export function Faq({ photo }: { photo: Photo }) {
           </p>
         </div>
         <div data-reveal className="lg:col-span-4 lg:justify-self-end">
-          <DriftImage {...photo} className="h-[60vw] w-[60vw] sm:h-[40vw] sm:w-[40vw] lg:h-[22vw] lg:w-[22vw]" travel={5} />
+          <DriftImage {...photo} zoom={1.9} className="h-[60vw] w-[60vw] sm:h-[40vw] sm:w-[40vw] lg:h-[22vw] lg:w-[22vw]" travel={4} />
         </div>
       </div>
 
@@ -34,7 +34,7 @@ export function Faq({ photo }: { photo: Photo }) {
           const tone = TONES[index % TONES.length];
           return (
             <li key={item.question} className={`relative ${index > 0 ? "-mt-19" : ""}`} style={{ zIndex: index + 1 }}>
-              <div className={`${tone} pb-19 ${index > 0 ? "mt-9" : "mt-9"}`}>
+              <div className={`${tone} mt-9 ${index === FAQ.length - 1 ? "pb-6" : "pb-19"}`}>
                 <button
                   type="button"
                   onClick={() => setOpen(isOpen ? null : index)}

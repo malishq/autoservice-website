@@ -11,7 +11,7 @@ export function Booking() {
         <div className="grid lg:grid-cols-[46fr_auto_54fr]">
           <div className="relative flex flex-col justify-between gap-10 p-6 sm:p-12">
             <h2 className="max-w-[7em] font-display text-h2 font-medium uppercase">Запись на сегодня</h2>
-            <Wrench className="mx-auto h-44 w-44 sm:h-60 sm:w-60" />
+            <Wrench className="mx-auto h-52 w-52 sm:h-72 sm:w-72" />
             <p className="max-w-[30rem] text-body">
               {SITE.address}, {SITE.district.split(",")[0]}. {SITE.hours}.{" "}
               <a href={SITE.phoneHref} className="font-semibold transition duration-200 hover:opacity-70">

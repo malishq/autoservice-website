@@ -33,7 +33,7 @@ export const PHOTOS = {
     alt: "Масляный щуп крупным планом на фоне двигателя",
     width: 1600,
     height: 1068,
-    position: "55% 50%",
+    position: "46% 44%",
   },
 } satisfies Record<string, Photo>;
 

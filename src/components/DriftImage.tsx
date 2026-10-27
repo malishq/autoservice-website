@@ -17,9 +17,10 @@ type Props = {
   className?: string;
   travel?: number;
   position?: string;
+  zoom?: number;
 };
 
-export function DriftImage({ src, alt, width, height, className = "", travel = 7, position = "50% 50%" }: Props) {
+export function DriftImage({ src, alt, width, height, className = "", travel = 7, position = "50% 50%", zoom = 1.16 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
 
   useGSAP(
@@ -46,8 +47,8 @@ export function DriftImage({ src, alt, width, height, className = "", travel = 7
         height={height}
         unoptimized
         loading="lazy"
-        className="h-full w-full scale-[1.16] object-cover"
-        style={{ objectPosition: position }}
+        className="h-full w-full object-cover"
+        style={{ objectPosition: position, scale: String(zoom) }}
       />
     </div>
   );

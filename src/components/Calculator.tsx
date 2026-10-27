@@ -63,28 +63,6 @@ export function Calculator({ image }: { image: { src: string; alt: string; width
             посчитаем стоимость работ.
           </p>
 
-          <fieldset data-reveal className="mt-10">
-            <legend className="text-small font-medium text-muted">Класс автомобиля</legend>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {CAR_CLASSES.map((c) => (
-                <label key={c.id} className="relative cursor-pointer">
-                  <input
-                    type="radio"
-                    name={`${id}-class`}
-                    value={c.id}
-                    checked={classId === c.id}
-                    onChange={() => setClassId(c.id)}
-                    className="peer sr-only"
-                  />
-                  <span className="inline-flex min-h-12 items-center rounded-full bg-surface-2 px-5 py-2.5 text-body font-medium text-ink transition duration-200 peer-checked:bg-accent peer-checked:text-accent-ink peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-accent hover:bg-surface-3 peer-checked:hover:bg-accent-strong active:scale-[0.97]">
-                    {c.label}
-                  </span>
-                </label>
-              ))}
-            </div>
-            <p className="mt-3 text-small text-muted">{CAR_CLASSES.find((c) => c.id === classId)?.hint}</p>
-          </fieldset>
-
           <div data-reveal className="mt-10">
             <div className="flex flex-wrap items-end justify-between gap-x-8 gap-y-4">
               <div className="flex flex-wrap items-end gap-x-4 gap-y-2">
@@ -137,6 +115,28 @@ export function Calculator({ image }: { image: { src: string; alt: string; width
             </div>
           </div>
 
+          <fieldset data-reveal className="mt-10">
+            <legend className="text-small font-medium text-muted">Класс автомобиля</legend>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {CAR_CLASSES.map((c) => (
+                <label key={c.id} className="relative cursor-pointer">
+                  <input
+                    type="radio"
+                    name={`${id}-class`}
+                    value={c.id}
+                    checked={classId === c.id}
+                    onChange={() => setClassId(c.id)}
+                    className="peer sr-only"
+                  />
+                  <span className="inline-flex min-h-12 items-center rounded-full bg-surface-2 px-5 py-2.5 text-body font-medium text-ink transition duration-200 peer-checked:bg-accent peer-checked:text-accent-ink peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-accent hover:bg-surface-3 peer-checked:hover:bg-accent-strong active:scale-[0.97]">
+                    {c.label}
+                  </span>
+                </label>
+              ))}
+            </div>
+            <p className="mt-3 text-small text-muted">{CAR_CLASSES.find((c) => c.id === classId)?.hint}</p>
+          </fieldset>
+
           <div data-reveal className="mt-12">
             <p className="font-display text-h3 text-ink">
               {result.label} на {formatKm(result.km)}
@@ -170,7 +170,7 @@ export function Calculator({ image }: { image: { src: string; alt: string; width
             })}
           </ul>
 
-          <div data-reveal className="mt-12 flex flex-wrap items-center justify-between gap-6 bg-surface-2 px-6 py-6 sm:px-8">
+          <div data-reveal className="mt-14 flex flex-wrap items-center justify-between gap-6 bg-surface-2 px-6 py-6 sm:px-8">
             <div>
               <p className="font-display text-h2 font-medium text-ink">
                 от {formatRub(result.total)}

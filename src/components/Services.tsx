@@ -32,7 +32,7 @@ export function Services() {
 
       <div className="mt-6 sm:mt-10">
         {SERVICES.map((category) => (
-          <div key={category.id} className="pt-16 first:pt-10 sm:pt-20 sm:first:pt-14">
+          <div key={category.id} className="pt-20 first:pt-10 sm:pt-24 sm:first:pt-14">
             <div data-reveal className="flex items-baseline justify-between gap-6">
               <h3 className="font-display text-h2 font-medium text-ink">{category.name}</h3>
               <span className="shrink-0 text-body text-muted">{plural(category.items.length)}</span>
